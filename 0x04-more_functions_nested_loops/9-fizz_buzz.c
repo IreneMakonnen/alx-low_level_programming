@@ -2,7 +2,6 @@
 
 /**
  * main - The Fizz-Buzz test
- * @n; Integer to offer parameters
  * Return: 0
  */
 
@@ -23,10 +22,6 @@ int main(void)
 		else if (n % 5 == 0)
 		{
 			printf("Buzz ");
-		}
-		else if (n == 0)
-		{
-			printf("%d", n);
 		}
 		else
 		{

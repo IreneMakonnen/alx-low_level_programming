@@ -10,15 +10,19 @@ void print_to_98(int n)
 {
 	int j;
 
-	for (j = n; j <= 98; j++)
+	if (n <= 98)
 	{
-		_putchar(j / 10 + '0');
-		_putchar(j % 10 + '0');
-		if (j != 98)
+		for (j = n; j < 98; j++)
 		{
-		_putchar(',');
-		_putchar(' ');
+		printf("%d, ", j);
 		}
 	}
-	_putchar('\n');
+	else
+	{
+		for (j = n; j > 98; j--)
+		{
+		printf("%d, ", j);
+		}
+	}
+	printf("98\n");
 }

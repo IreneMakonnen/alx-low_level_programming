@@ -1,11 +1,12 @@
 #include "main.h"
 
- /*
-  * main - Entry point
-  * Description: Print a word
-  * Return: Always 0 (Success)
-  */
-
+/**
+ * main - Entry point
+ *
+ * Description: This program prints the word "putchar" to the console.
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
 	_putchar('_');

@@ -8,29 +8,7 @@
 
 int is_palindrome(char *s)
 {
-	int len;
-	char *p1;
-	char *p2;
-
-	if (*s == '\0')
+	if (*s == 0)
 		return (1);
-
-	len = 1;
-
-	while (*(s + len) != '\0')
-	{
-		len++;
-	}
-	p1 = s;
-	p2 = s + len - 1;
-
-	while (p1 < p2)
-	{
-		if (*p1 != *p2)
-			return (0);
-		p1++;
-		p2--;
-	}
-
-	return (1);
+	return ();
 }

@@ -20,24 +20,25 @@ void print_times_table(int n)
 		{
 			multiply = a * b;
 
-			if (b != 0)
-				_putchar(',');
-			if (multiply <= 10 && b != 0)
-				_putchar(' ');
-			if (multiply < 100 && b != 0)
-				_putchar(' ');
-			if (multiply >= 100)
+			if (multiply <= 15)
 			{
-				_putchar((multiply / 100) + '0');
-				_putchar(((multiply /10) % 10) + '0');
+				if (b != 0)
+					_putchar(' ');
+				_putchar(multiply + '0');
 			}
-			else if (multiply >= 10)
+			else
 			{
 				_putchar((multiply / 10) + '0');
+				_putchar((multiply % 10) + '0');
 			}
-			_putchar((multiply % 10) + '0');
-			
+
+			if (b != n)
+			{
+				_putchar(',');
+				_putchar(' ');
+			}
 		}
+
 		_putchar('\n');
 	}
 }

@@ -7,19 +7,19 @@
 
 int main(void)
 {
-	int first;
-	int second;
-	int sum;
-	int numbers;
+	unsigned int first;
+	unsigned int second;
+	unsigned int sum;
+	unsigned int numbers;
 
 	first = 1;
 	second = 2;
-	printf("%d, %d", first, second);
+	printf("%u, %u", first, second);
 
 	for (numbers = 3; numbers <= 50; numbers++)
 	{
 		sum = first + second;
-		printf(", %d", sum);
+		printf(", %u", sum);
 		first = second;
 		second = sum;
 	}

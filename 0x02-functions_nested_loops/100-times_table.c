@@ -30,8 +30,8 @@ void print_times_table(int n)
 				else if (multiply <= 99)
 				{
 					_putchar(' ');
-					_putchar((multiply / 10)+ '0');
-					_putchar((multiply % 10)+ '0');
+					_putchar((multiply / 10) + '0');
+					_putchar((multiply % 10) + '0');
 				}
 				else
 				{

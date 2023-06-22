@@ -7,22 +7,29 @@
 
 int main(void)
 {
-	double first;
-	double second;
-	double sum;
+	unsigned long int first, second, sum;
 	int numbers;
 
-	first = 1.0;
-	second = 2.0;
-	printf("%.0f, %.0f", first, second);
+	first = 1;
+	second = 2;
+	sum = 0;
+	printf("%lu, %lu", first, second);
 
-	for (numbers = 3; numbers <= 98; numbers++)
+	for (numbers = 3; numbers <= 92; numbers++)
 	{
 		sum = first + second;
-		printf(", %.0f", sum);
+		printf(", %lu", sum);
 		first = second;
 		second = sum;
 	}
+
+	for (numbers = 93; numbers <= 98; numbers++)
+        {
+                sum = first + second;
+                printf(", %lu", sum);
+                first = second;
+                second = sum;
+        }
 	printf("\n");
 
 	return (0);

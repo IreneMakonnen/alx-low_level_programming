@@ -22,7 +22,7 @@ int main(void)
 	}
 	if (number > factor)
 		factor = number;
-	
+
 	printf("%lu\n", factor);
 
 	return (0);

@@ -18,6 +18,10 @@ void puts2(char *str)
 	{
 		_putchar(str[string]);
 		string += 2;
+
+		if (str[string] == '\0')
+			break;
 	}
+
 	_putchar('\n');
 }

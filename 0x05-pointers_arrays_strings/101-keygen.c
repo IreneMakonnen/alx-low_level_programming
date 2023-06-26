@@ -4,24 +4,25 @@
 
 #define PASSWORD_LENGTH 12
 
+/**
+ * main - Generates random valid passwords for 101-crackme program
+ * Return: 0
+ */
+
 int main(void)
 {
-    char password[PASSWORD_LENGTH + 1];
-    const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    int i;
+	char password[PASSWORD_LENGTH + 1];
+	int i;
 
-    srand(time(NULL));
+	srand(time(NULL));
 
-    for (i = 0; i < PASSWORD_LENGTH; i++)
-    {
-        int index = rand() % (sizeof(charset) - 1);
-        password[i] = charset[index];
-    }
+	for (i = 0; i < PASSWORD_LENGTH; i++)
+		password[i] = rand() % 26 + 97;
 
-    password[PASSWORD_LENGTH] = '\0';
+	password[PASSWORD_LENGTH] = '\0';
 
-    printf("%s\n", password);
+	printf("%s\n", password);
 
-    return 0;
+	return (0);
 }
 

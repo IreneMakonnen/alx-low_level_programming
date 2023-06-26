@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define PASSWORD_LENGTH 15
+#define PASSWORD_LENGTH 12
 
 /**
  * main - Generates random valid passwords for 101-crackme program

@@ -59,3 +59,11 @@
 - Scope of variables
 - What are the gcc flags -Wall -Werror -pedantic -Wextra -std=gnu89
 - What are header files and how to to use them with #include
+
+0x05. C - Pointers, arrays and strings
+	Learning Objectives
+- What are pointers and how to use them
+- What are arrays and how to use them
+- What are the differences between pointers and arrays
+- How to use strings and how to manipulate them
+- Scope of variables

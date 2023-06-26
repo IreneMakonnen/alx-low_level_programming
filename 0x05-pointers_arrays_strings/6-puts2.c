@@ -11,7 +11,10 @@ void puts2(char *str)
 	int length;
 
 	if (*str == '\0')
+	{
+		_putchar('\n');
 		return;
+	}
 
 	length = 0;
 

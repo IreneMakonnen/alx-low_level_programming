@@ -67,3 +67,6 @@
 - What are the differences between pointers and arrays
 - How to use strings and how to manipulate them
 - Scope of variables
+
+0x06. C - More pointers, arrays and strings
+- Similar to the above 0x05. C - Pointers, arrays and strings Learning Objectives

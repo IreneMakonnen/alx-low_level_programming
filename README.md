@@ -70,3 +70,17 @@
 
 0x06. C - More pointers, arrays and strings
 - Similar to the above 0x05. C - Pointers, arrays and strings Learning Objectives
+
+0x07. C - Even more pointers, arrays and strings
+- What are pointers to pointers and how to use them
+- What are multidimensional arrays and how to use them
+- What are the most common C standard library functions to manipulate strings
+
+0x08. C - Recursion
+	Learning Objectives
+- What is recursion
+- How to implement recursion
+- In what situations you should implement recursion
+- In what situations you shouldn’t implement recursion
+
+

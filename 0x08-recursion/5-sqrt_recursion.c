@@ -6,28 +6,26 @@
  * Return: -1 if n doesn't have natural square root or the natural square root
  */
 
+int _sqrt(int n, int a);
+
 int _sqrt_recursion(int n)
 {
-	int first;
-	int last;
-
 	if (n == 0 || n == 1)
 		return (n);
 
-	first = 1;
-	last = n;
+	return (_sqrt(n, 1));
+}
 
-	while (first <= last)
-	{
-		int average = (first + last) / 2;
+int _sqrt(int n, int a)
+{
+	int sqroot;
 
-		if (average * average == n)
-			return (average);
-		else if (average * average < n)
-			first = last + 1;
-		else
-			last = last - 1;
-	}
+	sqroot = a * a;
 
-	return (-1);
+	if (sqroot > n)
+		return (-1);
+	if (sqroot == n)
+		return (a);
+
+	return (_sqrt(n, a + 1));
 }

@@ -49,7 +49,6 @@ char **strtow(char *str)
 
 	if (count == 0)
 		return (0);
-	
 	words = (char **)realloc(words, (count + 1) * sizeof(char *));
 	if (words == 0)
 	{
@@ -86,6 +85,6 @@ char **strtow(char *str)
 		}
 		words[i][length] = '\0';
 	}
-	
+
 	return (words);
 }

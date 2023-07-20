@@ -1,6 +1,7 @@
 #include "variadic_functions.h"
 #include <stdarg.h>
 #include <stdio.h>
+
 /**
  * print_all - Prints anything
  * @format: Datatype list of arguments passed to function
@@ -36,7 +37,7 @@ void print_all(const char * const format, ...)
 				break;
 			case 's':
 				s = va_arg(args, char*);
-				if (s != 0)
+				if (s != NULL)
 					printf("%s", s);
 				else
 					printf("(nil)");
@@ -48,3 +49,4 @@ void print_all(const char * const format, ...)
 	va_end(args);
 	printf("\n");
 }
+

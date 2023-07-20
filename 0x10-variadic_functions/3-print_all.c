@@ -10,28 +10,37 @@ void print_all(const char * const format, ...)
 	va_list args;
 	const char *fptr = format;
 	char *s;
+	int print = 0;
 
 	va_start(args, format);
-
 	while (*fptr)
 	{
+		if (print)
+		{
+			if (*fptr == 'c' || *fptr == 'i' || *fptr == 'f' || *fptr == 's')
+				printf(", ");
+		}
 		switch (*fptr)
 		{
 			case 'c':
-				printf("%s%c", (fptr == format ? "" : ", "), va_arg(args, int));
+				printf("%c", va_arg(args, int));
+				print = 1;
 				break;
 			case 'i':
-				printf("%s%d", (fptr == format ? "" : ", "), va_arg(args, int));
+				printf("%d", va_arg(args, int));
+				print = 1;
 				break;
 			case 'f':
-				printf("%s%f", (fptr == format ? "" : ", "), va_arg(args, double));
+				printf("%f", va_arg(args, double));
+				print = 1;
 				break;
 			case 's':
 				s = va_arg(args, char*);
 				if (s != 0)
-					printf("%s%s", (fptr == format ? "" : ", "), s);
+					printf("%s", s);
 				else
-					printf("%s(nil)", (fptr == format ? "" : ", "));
+					printf("(nil)");
+				print = 1;
 				break;
 		}
 		fptr++;

@@ -9,17 +9,17 @@
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	int a = 0;
+	const char *fptr = format;
 	char *s;
 	char *separator = "";
 
 	va_start(args, format);
 
-	if (format)
+	if (*fptr)
 	{
-		while (format[a])
+		while (*fptr)
 		{
-			switch (format[a])
+			switch (*fptr)
 			{
 				case 'c':
 					printf("%s%c", separator, va_arg(args, int));
@@ -37,12 +37,12 @@ void print_all(const char * const format, ...)
 					printf("%s%s", separator, s);
 					break;
 				default:
-					a++;
+					fptr++;
 					continue;
 			}
 
 			separator = ", ";
-			a++;
+			fptr++;
 		}
 	}
 	printf("\n");

@@ -15,7 +15,7 @@ void print_all(const char * const format, ...)
 
 	va_start(args, format);
 
-	if (*fptr)
+	if (format)
 	{
 		while (*fptr)
 		{

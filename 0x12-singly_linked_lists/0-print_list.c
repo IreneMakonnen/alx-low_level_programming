@@ -2,7 +2,7 @@
 
 /**
  * print_list - Prints all elements of a sturcture list
- * @h: Pointer to string
+ * @h: Pointer to head of linked list to print
  * Return: Number of nodes, [0] (nil) if str = NULL
  */
 size_t print_list(const list_t *h)

@@ -134,4 +134,7 @@
 - When and why using linked lists vs arrays
 - How to build and use linked lists
 
+0x13. C - More singly linked lists
+- How to use linked lists
+
 

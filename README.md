@@ -135,6 +135,11 @@
 - How to build and use linked lists
 
 0x13. C - More singly linked lists
+	Learning Objectives
 - How to use linked lists
+
+0x14. C - Bit manipulation
+	Learning Objectives
+- How to manipulate bits and use bitwise operators
 
 

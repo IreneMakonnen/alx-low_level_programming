@@ -1,65 +1,77 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-#define BUFFER_SIZE 1024
+int open_file(const char *filename, int flags, mode_t mode);
+int copy_file(int fd_from, int fd_to);
 
 /**
- * main - Copies content of a file to another file
- * @argc: Argument count
- * @argv: An array of command line argument strings.
+ * main - Entry point for the program
+ * @argc: The number of command line arguments
+ * @argv: An array of command line argument strings
  * Return: 0 (Success)
  */
 int main(int argc, char *argv[])
 {
-	int fd_from, fd_to, read_result, write_result;
-	char buffer[BUFFER_SIZE];
+	int fd_from, fd_to;
 
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	fd_from = open(argv[1], O_RDONLY);
-	if (fd_from == -1)
+	fd_from = open_file(argv[1], O_RDONLY, 0);
+	fd_to = open_file(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	copy_file(fd_from, fd_to);
+	if (close(fd_from) == -1 || close(fd_to) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
+		dprintf(STDERR_FILENO, "Error: Can't close file descriptor\n");
+		exit(100);
 	}
-	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (fd_to == -1)
+	return (0);
+}
+
+/**
+ * open_file - Opens a file with specified flags and mode
+ * @filename: The name of the file
+ * @flags: The flags for opening the file
+ * @mode: The permissions mode
+ * Return: The file descriptor on success, or exits on failure
+ */
+int open_file(const char *filename, int flags, mode_t mode)
+{
+	int fd = open(filename, flags, mode);
+
+	if (fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		close(fd_from);
-		exit(99);
+		dprintf(STDERR_FILENO, "Error: Can't %s %s\n",
+		(flags & O_WRONLY) ? "write to" : "read from", filename);
+		exit((flags & O_WRONLY) ? 99 : 98);
 	}
+	return (fd);
+}
+
+/**
+ * copy_file - Copies data from one file descriptor to another.
+ * @fd_from: The source file descriptor.
+ * @fd_to: The destination file descriptor.
+ */
+int copy_file(int fd_from, int fd_to)
+{
+	char buffer[BUFFER_SIZE];
+	ssize_t read_result, write_result;
+
 	while ((read_result = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
 		write_result = write(fd_to, buffer, read_result);
 		if (write_result == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			close(fd_from);
-			close(fd_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to destination file\n");
 			exit(99);
 		}
 	}
 	if (read_result == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		close(fd_from);
-		close(fd_to);
+		dprintf(STDERR_FILENO, "Error: Can't read from source file\n");
 		exit(98);
 	}
-	if (close(fd_from) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
-		exit(100);
-	}
-	if (close(fd_to) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
-		exit(100);
-	}
-	return (0);
+	return (1);
 }

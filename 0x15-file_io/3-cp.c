@@ -57,9 +57,8 @@ void copy_file(int fd_from, int fd_to)
  */
 int main(int argc, char *argv[])
 {
-	int from, to;
+	int from, to, read_result, write_result;
 	char buffer[1024];
-	size_t read_result, write_result;
 
 	if (argc != 3)
 	{

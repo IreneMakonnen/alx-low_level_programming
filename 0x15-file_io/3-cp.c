@@ -1,7 +1,7 @@
 #include "main.h"
 
 int open_file(const char *filename, int flags, mode_t mode);
-int copy_file(int fd_from, int fd_to);
+void copy_file(int fd_from, int fd_to);
 
 /**
  * main - Entry point for the program
@@ -52,9 +52,9 @@ int open_file(const char *filename, int flags, mode_t mode)
 /**
  * copy_file - Copies data from one file descriptor to another.
  * @fd_from: The source file descriptor.
- * @fd_to: The destination file descriptor.
+ * @fd_to: The destination file descriptor
  */
-int copy_file(int fd_from, int fd_to)
+void copy_file(int fd_from, int fd_to)
 {
 	char buffer[BUFFER_SIZE];
 	ssize_t read_result, write_result;
@@ -73,5 +73,4 @@ int copy_file(int fd_from, int fd_to)
 		dprintf(STDERR_FILENO, "Error: Can't read from source file\n");
 		exit(98);
 	}
-	return (1);
 }

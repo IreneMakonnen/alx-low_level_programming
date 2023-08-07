@@ -17,7 +17,7 @@ int open_file(const char *filename, int flags, mode_t mode)
 	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't %s %s\n",
-		(flags & O_WRONLY) ? "write to" : "read from", filename);
+			(flags & O_WRONLY) ? "write to" : "read from", filename);
 		exit((flags & O_WRONLY) ? 99 : 98);
 	}
 	return (fd);
@@ -31,7 +31,7 @@ int open_file(const char *filename, int flags, mode_t mode)
 void copy_file(int fd_from, int fd_to)
 {
 	char buffer[1024];
-	ssize_t read_result, write_result;
+	int read_result, write_result;
 
 	while ((read_result = read(fd_from, buffer, sizeof(buffer))) > 0)
 	{
@@ -57,8 +57,7 @@ void copy_file(int fd_from, int fd_to)
  */
 int main(int argc, char *argv[])
 {
-	int from, to, read_result, write_result;
-	char buffer[1024];
+	int from, to;
 
 	if (argc != 3)
 	{
@@ -67,20 +66,7 @@ int main(int argc, char *argv[])
 	}
 	from = open_file(argv[1], O_RDONLY, 0);
 	to = open_file(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	while ((read_result = read(from, buffer, sizeof(buffer))) > 0)
-	{
-		write_result = write(to, buffer, read_result);
-		if (write_result == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			exit(99);
-		}
-	}
-	if (read_result == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from %s\n", argv[1]);
-		exit(98);
-	}
+	copy_file(from, to);
 	close(from);
 	close(to);
 	return (0);
